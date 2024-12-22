@@ -1,0 +1,25 @@
+{
+  "name": "modular-llm-chat",
+  "version": "1.0.0",
+  "description": "A modular chat interface for multiple LLM providers",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "frontend": "npm run dev --workspace=frontend",
+    "backend": "npm run dev --workspace=backend",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "build": "npm run build --workspaces",
+    "start": "npm run build && concurrently \"npm run start --workspace=backend\" \"npm run preview --workspace=frontend\"",
+    "install-all": "npm install && npm install --workspace=backend && npm install --workspace=frontend"
+  },
+  "keywords": ["llm", "chat", "openai", "anthropic", "gemini"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  }
+}
